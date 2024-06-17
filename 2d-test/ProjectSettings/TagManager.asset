@@ -38,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Water
+    uniqueID: 3273936493
+    locked: 0
+  - name: Grass
+    uniqueID: 2933510697
+    locked: 0
+  - name: GrassDecorations
+    uniqueID: 3420388175
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

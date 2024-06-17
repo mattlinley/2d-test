@@ -6,13 +6,16 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     [field: SerializeField] public float MoveSpeed { get; private set; }
-    [field: SerializeField] public DirectionalAnimationSet Idle {  get; private set; }
+    [field: SerializeField] public CharacterState Idle {  get; private set; }
+    [field: SerializeField] public CharacterState Walk { get; private set; }
+    [field: SerializeField] public CharacterState Use { get; private set; }
+    [field: SerializeField] public StateAnimationSetDictionary StateAnimations { get; private set; }
 
     private Vector2 moveInput = Vector2.zero;
     private Vector2 facingDirection = Vector2.zero;
     private Rigidbody2D rb;
     private Animator animator;
-    private DirectionalAnimationSet currentAnimationSet;
+    private CharacterState currentState;
     private AnimationClip currentClip;
 
     private void Start()
@@ -20,12 +23,13 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
-        currentAnimationSet = Idle;
+        currentState = Idle;
     }
 
     private void Update()
     {
-        AnimationClip expectedClip = currentAnimationSet.GetFacingClip(facingDirection);
+
+        AnimationClip expectedClip = StateAnimations.GetFacingClipFromState(currentState, facingDirection);
 
         if (currentClip == null || currentClip != expectedClip)
         {
@@ -33,21 +37,35 @@ public class Player : MonoBehaviour
             animator.Play(expectedClip.name);
             currentClip = expectedClip;
         }
+
     }
+
+    
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + moveInput * MoveSpeed * Time.fixedDeltaTime);
+        if (currentState.CanMove) //stop movement if using item, fishing rod for example
+        {
+            //rb.MovePosition(rb.position + moveInput * MoveSpeed * Time.fixedDeltaTime);
+            //rb.AddForce(MoveSpeed * moveInput * Time.fixedDeltaTime);
+            rb.velocity = MoveSpeed * moveInput;
+        }
+        
     }
 
 
     void OnMove(InputValue value) // run by inputsystem on move action
     {
-        moveInput = value.Get<Vector2>();
+        moveInput = value.Get<Vector2>(); //Set movement vector to be used in fixedupdate
 
         if (moveInput != Vector2.zero)
         {
-            facingDirection = moveInput; 
+            facingDirection = moveInput;
+            currentState = Walk;  // set animation state to walking
+        }
+        else
+        {
+            currentState = Idle; // no movement so set animation state to idle
         }
     }
 
