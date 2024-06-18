@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
 public class Player : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class Player : MonoBehaviour
     private Animator animator;
     private CharacterState currentState;
     private AnimationClip currentClip;
+
+    //testing
+    public Collider2D waterCollider;
+    public Tilemap waterTileMap;
 
     private void Start()
     {
@@ -38,6 +43,8 @@ public class Player : MonoBehaviour
             currentClip = expectedClip;
         }
 
+        //Debug.Log(waterCollider.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
+        //Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
 
     
@@ -72,5 +79,10 @@ public class Player : MonoBehaviour
     void OnFire()
     {
         print("Shots fired");
+        TileBase tile = FindObjectOfType<TileManager>().GetTileAtMousePosition(waterTileMap);
+        Debug.Log(tile);
+
+
+
     }
 }

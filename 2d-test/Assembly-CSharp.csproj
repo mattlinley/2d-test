@@ -69,6 +69,7 @@
     <Compile Include="Assets\Downloaded\Unity-SerializableDictionary-master\Assets\Scripts\DebugUtils.cs" />
     <Compile Include="Assets\Scripts\DirectionalAnimationSet.cs" />
     <Compile Include="Assets\Downloaded\Unity-SerializableDictionary-master\Assets\SerializableDictionary\Example\UserSerializableDictionaries.cs" />
+    <Compile Include="Assets\Scripts\TileManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Downloaded\Unity-SerializableDictionary-master\ProjectSettings\ProjectVersion.txt" />
