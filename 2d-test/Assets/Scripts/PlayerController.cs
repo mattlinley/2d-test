@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -53,8 +54,6 @@ public class Player : MonoBehaviour
     {
         if (currentState.CanMove) //stop movement if using item, fishing rod for example
         {
-            //rb.MovePosition(rb.position + moveInput * MoveSpeed * Time.fixedDeltaTime);
-            //rb.AddForce(MoveSpeed * moveInput * Time.fixedDeltaTime);
             rb.velocity = MoveSpeed * moveInput;
         }
         
@@ -73,7 +72,22 @@ public class Player : MonoBehaviour
         else
         {
             currentState = Idle; // no movement so set animation state to idle
+
+            //Round position to nearest pixel
+            transform.position = GetPixelPosition();
         }
+    }
+
+    /// <summary>
+    /// Round position to nearest pixel (16ppu)
+    /// </summary>
+    /// <returns>rounded position</returns>
+    private Vector3 GetPixelPosition()
+    {
+        Vector3 position = transform.position;
+        position.x = Mathf.Round(16 * position.x) / 16;
+        position.y = Mathf.Round(16 * position.y) / 16;
+        return position;
     }
 
     void OnFire()
