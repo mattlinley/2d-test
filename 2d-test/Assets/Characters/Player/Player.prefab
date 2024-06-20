@@ -5084,6 +5084,8 @@ MonoBehaviour:
     m_values:
     - {fileID: 11400000, guid: a0bb40484e105c64ba4fdf8a9c65b99f, type: 2}
     - {fileID: 11400000, guid: 6fdcbce360c930e4fa418e2958f7e4e7, type: 2}
+  waterCollider: {fileID: 0}
+  waterTileMap: {fileID: 0}
 --- !u!50 &6182264421151833485
 Rigidbody2D:
   serializedVersion: 4
@@ -5146,8 +5148,8 @@ BoxCollider2D:
   m_Offset: {x: -0.015161134, y: 0.07966812}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.51, y: 0.15}
-    oldSize: {x: 0.8125, y: 1.3125}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 3}
     newSize: {x: 0.48, y: 0.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5197,7 +5199,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2113588264, guid: acf2622a67b52f34aba286a06a900c48, type: 3}
+  m_Sprite: {fileID: 706157102, guid: 33ff9ab9221243f46a259e48897073a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
