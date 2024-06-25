@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
-public class Player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [field: SerializeField] public float MoveSpeed { get; private set; }
     [field: SerializeField] public CharacterState Idle {  get; private set; }
@@ -14,21 +14,25 @@ public class Player : MonoBehaviour
     [field: SerializeField] public StateAnimationSetDictionary StateAnimations { get; private set; }
 
     private Vector2 moveInput = Vector2.zero;
-    private Vector2 facingDirection = Vector2.zero;
-    private Rigidbody2D rb;
+    public Vector2 facingDirection = Vector2.zero;
+    public Rigidbody2D rb;
     private Animator animator;
     private CharacterState currentState;
     private AnimationClip currentClip;
+    private UIManager uiManager;
 
     //testing
     public Collider2D waterCollider;
     public Tilemap waterTileMap;
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-
+        uiManager = FindObjectOfType<UIManager>();
+    }
+    private void Start()
+    {
         currentState = Idle;
     }
 
@@ -42,6 +46,15 @@ public class Player : MonoBehaviour
             //Need a new animation so change it
             animator.Play(expectedClip.name);
             currentClip = expectedClip;
+        }
+
+        if (uiManager.IsPaused && animator.enabled)
+        {
+            animator.enabled = false;
+        }
+        if (!uiManager.IsPaused && !animator.enabled)
+        {
+            animator.enabled = true;
         }
 
         //Debug.Log(waterCollider.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
@@ -62,7 +75,11 @@ public class Player : MonoBehaviour
 
     void OnMove(InputValue value) // run by inputsystem on move action
     {
-        moveInput = value.Get<Vector2>(); //Set movement vector to be used in fixedupdate
+        if (!uiManager.UIOpen)
+        {
+            moveInput = value.Get<Vector2>(); //Set movement vector to be used in fixedupdate
+        }
+        
 
         if (moveInput != Vector2.zero)
         {
@@ -92,7 +109,7 @@ public class Player : MonoBehaviour
 
     void OnFire()
     {
-        print("Shots fired");
+
         TileBase tile = FindObjectOfType<TileManager>().GetTileAtMousePosition(waterTileMap);
         Debug.Log(tile);
 

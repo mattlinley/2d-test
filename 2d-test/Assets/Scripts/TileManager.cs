@@ -15,7 +15,7 @@ public class TileManager : MonoBehaviour
     public bool canFish; //TODO: valid fishing equipment and standing by water
     public bool showPlayerTile;
 
-    private void Start()
+    private void Awake()
     {
         //get reference to water highlight sprite
         highlightWaterTile = transform.Find("HighlightWaterTile");
