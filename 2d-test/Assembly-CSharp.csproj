@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\Game Data\AllGameData.cs" />
     <Compile Include="Assets\Downloaded\Unity-SerializableDictionary-master\Assets\SerializableDictionary\Example\SerializableDictionaryExample.cs" />
     <Compile Include="Assets\Downloaded\Unity-SerializableDictionary-master\Assets\SerializableDictionary\SerializableHashSet.cs" />
+    <Compile Include="Assets\Scripts\LoadSlot.cs" />
     <Compile Include="Assets\Scripts\CharacterState.cs" />
     <Compile Include="Assets\Scripts\StateAnimationSetDictionary.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />

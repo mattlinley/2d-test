@@ -12,10 +12,12 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField] public CharacterState Walk { get; private set; }
     [field: SerializeField] public CharacterState Use { get; private set; }
     [field: SerializeField] public StateAnimationSetDictionary StateAnimations { get; private set; }
+    [field: SerializeField] public bool GameLoading { get; set; }
 
     private Vector2 moveInput = Vector2.zero;
     public Vector2 facingDirection = Vector2.zero;
     public Rigidbody2D rb;
+
     private Animator animator;
     private CharacterState currentState;
     private AnimationClip currentClip;
@@ -75,7 +77,7 @@ public class PlayerController : MonoBehaviour
 
     void OnMove(InputValue value) // run by inputsystem on move action
     {
-        if (!uiManager.UIOpen)
+        if (!uiManager.UIOpen && !GameLoading)
         {
             moveInput = value.Get<Vector2>(); //Set movement vector to be used in fixedupdate
         }

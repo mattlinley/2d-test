@@ -1969,6 +1969,7 @@ GameObject:
   - component: {fileID: 606862224}
   - component: {fileID: 606862223}
   - component: {fileID: 606862222}
+  - component: {fileID: 606862225}
   m_Layer: 5
   m_Name: Button_SaveSlot2
   m_TagString: Untagged
@@ -2078,6 +2079,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606862220}
   m_CullTransparentMesh: 1
+--- !u!114 &606862225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606862220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b18e413a0427d45a8b29835d5bf8c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotNumber: 2
+  alertUI: {fileID: 787580923}
 --- !u!1 &608667718
 GameObject:
   m_ObjectHideFlags: 0
@@ -20386,6 +20401,7 @@ GameObject:
   - component: {fileID: 1416962763}
   - component: {fileID: 1416962762}
   - component: {fileID: 1416962761}
+  - component: {fileID: 1416962764}
   m_Layer: 5
   m_Name: Button_SaveSlot3
   m_TagString: Untagged
@@ -20495,6 +20511,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416962759}
   m_CullTransparentMesh: 1
+--- !u!114 &1416962764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416962759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b18e413a0427d45a8b29835d5bf8c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slotNumber: 3
+  alertUI: {fileID: 787580923}
 --- !u!1 &1417829911
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,7 +45,11 @@ public class UIManager : MonoBehaviour
         InventoryOpen=false;
 
         pauseMenu.SetActive(false);
+        settingsMenu.SetActive(false);
+        saveMenu.SetActive(false);
+        loadMenu.SetActive(false);
         IsPaused = false;
+        InSubMenu = false;
 
         UIOpen = false;
 
